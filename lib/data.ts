@@ -49,7 +49,7 @@ export const experience = [
     id: 1,
     company: 'TechiZen',
     role: 'AI Engineer Intern',
-    period: 'Jan 2026 — Present',
+    period: 'Oct 2025— Feb 2026',
     description: 'Built RAG pipelines and LLM-powered assessment tools for an ed-tech platform.',
     points: [
       'Engineered multi-provider RAG pipeline (Vertex AI, AWS Bedrock, Ollama) with LangChain — 1,500+ queries/month.',
