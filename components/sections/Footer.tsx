@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { fadeUpVariants, staggerContainer } from '@/lib/animations'
-import { socialLinks } from '@/lib/data'
+import { resumePath, socialLinks } from '@/lib/data'
 
 const navLinks = [
   { label: 'work', href: '/work' },
@@ -82,6 +82,12 @@ export default function Footer() {
                 {link.label}
               </Link>
             ))}
+            <Link
+              href={resumePath}
+              className="hover:text-accent transition-colors"
+            >
+              resume
+            </Link>
           </nav>
 
           <div className="flex items-center gap-2">

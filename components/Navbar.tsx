@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
+import { resumePath } from '@/lib/data'
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -56,6 +57,13 @@ export default function Navbar() {
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             now
+          </Link>
+
+          <Link
+            href={resumePath}
+            className="text-muted-foreground hover:text-foreground transition-colors"
+          >
+            resume
           </Link>
 
           {/* Hire Me Button */}

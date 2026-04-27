@@ -48,8 +48,8 @@ export const experience = [
   {
     id: 1,
     company: 'TechiZen',
-    role: 'AI Engineer Intern',
-    period: 'Oct 2025— Feb 2026',
+    role: 'Software Developer Engineer Intern',
+    period: 'Feb 2026— present',
     description: 'Built RAG pipelines and LLM-powered assessment tools for an ed-tech platform.',
     points: [
       'Engineered multi-provider RAG pipeline (Vertex AI, AWS Bedrock, Ollama) with LangChain — 1,500+ queries/month.',
@@ -708,3 +708,10 @@ export const socialLinks = [
   { name: 'leetcode', href: 'https://leetcode.com/u/ngoyal88' },
   { name: 'email', href: 'mailto:goyalnikhil883@gmail.com' },
 ]
+
+export const resumePath = '/resume'
+export const resumeDriveLink = 'https://drive.google.com/file/d/1jgMNRFPNVQDhhBa0TndazvzPWlolQ-PA/view?usp=sharing'
+export const resumeDrivePreviewLink =
+  'https://drive.google.com/file/d/1jgMNRFPNVQDhhBa0TndazvzPWlolQ-PA/preview'
+export const resumeDriveDownloadLink =
+  'https://drive.google.com/uc?export=download&id=1jgMNRFPNVQDhhBa0TndazvzPWlolQ-PA'
