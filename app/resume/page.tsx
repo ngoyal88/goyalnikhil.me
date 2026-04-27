@@ -17,7 +17,7 @@ export default function ResumePage() {
           <div className="space-y-3">
             <h1 className="text-4xl font-bold">resume</h1>
             <p className="text-muted-foreground max-w-2xl">
-              shareable resume endpoint with in-page preview. this URL is stable and can be used everywhere.
+              view, preview, and download my latest resume.
             </p>
           </div>
 
