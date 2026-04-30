@@ -1,11 +1,12 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { achievements } from '@/lib/data'
+import { useSiteData } from '@/components/SiteDataProvider'
 import { fadeUpVariants } from '@/lib/animations'
 import { BlurInText } from '@/components/animated'
 
 export default function Achievements() {
+  const { data } = useSiteData()
   return (
     <motion.section
       className="py-20 px-4 md:px-6 border-t border-border"
@@ -26,7 +27,7 @@ export default function Achievements() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-4">
-          {achievements.map((achievement, idx) => (
+          {data.achievements.map((achievement, idx) => (
             <motion.div
               key={achievement.id}
               className="p-6 pl-5 bg-secondary/30 border border-border border-l-accent border-l-[3px] rounded hover:bg-secondary/50 transition-all group cursor-pointer"

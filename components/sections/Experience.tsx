@@ -2,11 +2,12 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
-import { experience } from '@/lib/data'
+import { useSiteData } from '@/components/SiteDataProvider'
 import { fadeUpVariants, expandHeight } from '@/lib/animations'
 import { BlurInText } from '@/components/animated'
 
 export default function Experience() {
+  const { data } = useSiteData()
   const [expandedId, setExpandedId] = useState<number | null>(null)
 
   return (
@@ -29,7 +30,7 @@ export default function Experience() {
         </motion.div>
 
         <div className="space-y-4">
-          {experience.map((exp, idx) => (
+          {data.experience.map((exp, idx) => (
             <motion.div
               key={exp.id}
               className="border-l-2 border-border hover:border-accent transition-colors"

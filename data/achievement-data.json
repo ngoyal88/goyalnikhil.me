@@ -1,0 +1,44 @@
+{
+  "achievements": [
+    {
+      "id": 1,
+      "title": "700+ DSA problems · LeetCode top 8% · Contest rating 1759",
+      "description": "Competitive problem-solving and algorithmic practice"
+    },
+    {
+      "id": 2,
+      "title": "Codeforces 1587 · CodeChef 1719",
+      "description": "Competitive programming profiles"
+    },
+    {
+      "id": 3,
+      "title": "Meta Hacker Cup 2025 — Global Rank 758 (Round 2), 1899 (Round 1)",
+      "description": "Meta’s global programming competition"
+    },
+    {
+      "id": 4,
+      "title": "Winner — NatWest Hack4aCause 2025",
+      "description": "AI platform for digitizing handwritten content and automated evaluation"
+    },
+    {
+      "id": 5,
+      "title": "Top 100 — Amazon ML Challenge 2025",
+      "description": "National-level machine learning competition"
+    },
+    {
+      "id": 6,
+      "title": "Finalist — Smart India Hackathon 2024",
+      "description": "National hackathons"
+    },
+    {
+      "id": 7,
+      "title": "Top 5% Adobe GenSolve 2024",
+      "description": "Adobe challenge"
+    },
+    {
+      "id": 8,
+      "title": "Machine Learning Specialization — Andrew Ng, Stanford & DeepLearning.AI",
+      "description": "Completed ML specialization"
+    }
+  ]
+}

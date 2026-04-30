@@ -5,11 +5,12 @@ import { useState } from 'react'
 import { toast } from 'sonner'
 import { fadeUpVariants, staggerContainer } from '@/lib/animations'
 import { ShinyText, GradientText } from '@/components/animated'
-import { socialLinks } from '@/lib/data'
+import { useSiteData } from '@/components/SiteDataProvider'
 
 export default function Contact() {
+  const { data } = useSiteData()
   const [copied, setCopied] = useState(false)
-  const emailLink = socialLinks.find((l) => l.href.startsWith('mailto:'))
+  const emailLink = data.socialLinks.find((l) => l.href.startsWith('mailto:'))
   const EMAIL = emailLink?.href.replace('mailto:', '') ?? ''
 
   const handleEmailClick = (e: React.MouseEvent) => {
@@ -68,7 +69,7 @@ export default function Contact() {
             className="flex gap-6 pt-4"
             variants={fadeUpVariants}
           >
-            {socialLinks.map((link) => (
+            {data.socialLinks.map((link) => (
               <motion.a
                 key={link.name}
                 href={link.href}

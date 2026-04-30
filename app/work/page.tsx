@@ -4,10 +4,11 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/sections/Footer'
-import { projects } from '@/lib/data'
+import { useSiteData } from '@/components/SiteDataProvider'
 import { fadeUpVariants, staggerContainer } from '@/lib/animations'
 
 export default function WorkPage() {
+  const { data } = useSiteData()
   return (
     <main className="bg-background text-foreground">
       <Navbar />
@@ -42,7 +43,7 @@ export default function WorkPage() {
               initial="initial"
               animate="animate"
             >
-              {projects.map((project, idx) => {
+              {data.projects.map((project, idx) => {
                 const content = (
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">

@@ -1,0 +1,25 @@
+{
+  "writing": [
+    {
+      "id": 1,
+      "title": "How I Built a Voice AI Interviewer with <800ms Latency",
+      "date": "Aug 2025",
+      "excerpt": "The story of building Vetta.ai and everything that broke along the way...",
+      "slug": "voice-ai-interviewer-under-800ms-latency"
+    },
+    {
+      "id": 2,
+      "title": "I Built a High-Frequency Trading Matching Engine. Here's What I Learned.",
+      "date": "Oct 2025",
+      "excerpt": "A REG-NMS compliant C++17 matching engine with ~230µs latency. What I built, why it matters, and what surprised me.",
+      "slug": "hft-matching-engine-reg-nms"
+    },
+    {
+      "id": 3,
+      "title": "Your AI API Calls Are Leaking Money. I Built a Fix",
+      "date": "Jan 2026",
+      "excerpt": "Relay: a Go reverse proxy and API gateway for AI services. Caching, rate limiting, cost tracking, circuit breaking.",
+      "slug": "ai-api-calls-leaking-money-relay"
+    }
+  ]
+}

@@ -2,11 +2,12 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { writing } from '@/lib/data'
+import { useSiteData } from '@/components/SiteDataProvider'
 import { fadeUpVariants } from '@/lib/animations'
 import { BlurInText, GradientText } from '@/components/animated'
 
 export default function Writing() {
+  const { data } = useSiteData()
   return (
     <motion.section
       className="py-20 px-4 md:px-6 border-t border-border"
@@ -27,7 +28,7 @@ export default function Writing() {
         </motion.div>
 
         <div className="space-y-6">
-          {writing.map((post, idx) => (
+          {data.writing.map((post, idx) => (
             <motion.div
               key={post.id}
               initial={{ opacity: 0, y: 20 }}

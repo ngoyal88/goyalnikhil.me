@@ -1,13 +1,10 @@
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/sections/Footer'
-import {
-  resumeDriveDownloadLink,
-  resumeDriveLink,
-  resumeDrivePreviewLink,
-} from '@/lib/data'
+import { readSiteData } from '@/lib/site-data'
 
-export default function ResumePage() {
+export default async function ResumePage() {
+  const { resume } = await readSiteData()
   return (
     <main className="bg-background text-foreground min-h-screen">
       <Navbar />
@@ -23,7 +20,7 @@ export default function ResumePage() {
 
           <div className="flex flex-wrap items-center gap-3">
             <a
-              href={resumeDriveDownloadLink}
+              href={resume.driveDownloadLink}
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 rounded border border-accent text-accent font-mono text-xs font-medium hover:bg-accent hover:text-background transition-colors"
@@ -31,7 +28,7 @@ export default function ResumePage() {
               download pdf
             </a>
             <a
-              href={resumeDriveLink}
+              href={resume.driveLink}
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 rounded border border-border text-muted-foreground font-mono text-xs font-medium hover:text-foreground transition-colors"
@@ -49,7 +46,7 @@ export default function ResumePage() {
           <div className="border border-border rounded overflow-hidden bg-card">
             <iframe
               title="Resume PDF Preview"
-              src={resumeDrivePreviewLink}
+              src={resume.drivePreviewLink}
               className="w-full h-[75vh]"
               loading="lazy"
             />

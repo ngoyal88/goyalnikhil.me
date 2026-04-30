@@ -1,11 +1,13 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { stack } from '@/lib/data'
+import { useSiteData } from '@/components/SiteDataProvider'
 import { fadeUpVariants } from '@/lib/animations'
 import { BlurInText } from '@/components/animated'
 
 export default function Stack() {
+  const { data } = useSiteData()
+  const stack = data.stack
   const categories = [
     { title: 'languages', items: stack.languages },
     { title: 'backend', items: stack.backend },

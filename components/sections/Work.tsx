@@ -3,11 +3,12 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import { projects } from '@/lib/data'
+import { useSiteData } from '@/components/SiteDataProvider'
 import { fadeUpVariants } from '@/lib/animations'
 import { BlurInText, GradientText } from '@/components/animated'
 
 export default function Work() {
+  const { data } = useSiteData()
   const [hoveredId, setHoveredId] = useState<number | null>(null)
 
   return (
@@ -30,7 +31,7 @@ export default function Work() {
         </motion.div>
 
         <div className="space-y-6">
-          {projects.slice(0, 4).map((project, idx) => {
+          {data.projects.slice(0, 4).map((project, idx) => {
             const Wrapper = project.blogSlug ? Link : 'div'
             const wrapperProps = project.blogSlug
               ? { href: `/blog/${project.blogSlug}` }

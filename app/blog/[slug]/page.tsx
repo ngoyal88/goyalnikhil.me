@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/sections/Footer'
-import { blogPosts } from '@/lib/data'
+import { useSiteData } from '@/components/SiteDataProvider'
 import { fadeUpVariants } from '@/lib/animations'
 import { notFound } from 'next/navigation'
 
@@ -17,9 +17,10 @@ function renderWithBold(text: string) {
 }
 
 export default function BlogPostPage() {
+  const { data } = useSiteData()
   const params = useParams()
   const slug = typeof params.slug === 'string' ? params.slug : params.slug?.[0]
-  const post = slug ? blogPosts.find((p) => p.slug === slug) : undefined
+  const post = slug ? data.blogPosts.find((p) => p.slug === slug) : undefined
 
   if (!post) {
     notFound()

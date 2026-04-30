@@ -1,0 +1,53 @@
+{
+  "stack": {
+    "languages": [
+      "C++",
+      "Python",
+      "Go",
+      "JavaScript",
+      "TypeScript",
+      "SQL"
+    ],
+    "backend": [
+      "Node.js",
+      "FastAPI",
+      "Express.js",
+      "REST APIs",
+      "WebSockets",
+      "Docker"
+    ],
+    "frontend": [
+      "React",
+      "Next.js",
+      "TailwindCSS",
+      "Framer Motion"
+    ],
+    "aiml": [
+      "LangChain",
+      "TensorFlow",
+      "PyTorch",
+      "scikit-learn",
+      "Gemini API",
+      "NeMo Guardrails"
+    ],
+    "cloud": [
+      "AWS",
+      "GCP",
+      "Vercel",
+      "Docker",
+      "Linux"
+    ],
+    "databases": [
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+      "Firebase",
+      "MySQL"
+    ],
+    "exploring": [
+      "Kubernetes",
+      "Rust",
+      "Cursor"
+    ]
+  }
+}

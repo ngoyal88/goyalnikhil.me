@@ -4,10 +4,11 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/sections/Footer'
-import { writing } from '@/lib/data'
+import { useSiteData } from '@/components/SiteDataProvider'
 import { fadeUpVariants, staggerContainer } from '@/lib/animations'
 
 export default function BlogPage() {
+  const { data } = useSiteData()
   return (
     <main className="bg-background text-foreground">
       <Navbar />
@@ -42,7 +43,7 @@ export default function BlogPage() {
               initial="initial"
               animate="animate"
             >
-              {writing.map((post, idx) => (
+              {data.writing.map((post, idx) => (
                 <motion.div
                   key={post.id}
                   variants={fadeUpVariants}
@@ -71,7 +72,7 @@ export default function BlogPage() {
                     </div>
                   </Link>
 
-                  {idx < writing.length - 1 && (
+                  {idx < data.writing.length - 1 && (
                     <div className="border-t border-border mt-6" />
                   )}
                 </motion.div>

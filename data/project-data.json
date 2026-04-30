@@ -1,0 +1,70 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "REG-NMS Matching Engine",
+      "year": "2025",
+      "description": "High-frequency trading matching engine in C++17",
+      "preview": "Architected a high-performance engine with ~230µs latency, async WAL, WebSocket thread pool for L2 market data, trailing stops, stop-loss, and crash-recovery from 100k+ log entries.",
+      "tags": [
+        "C++17",
+        "HFT",
+        "WebSocket",
+        "WAL"
+      ],
+      "blogSlug": "hft-matching-engine-reg-nms"
+    },
+    {
+      "id": 2,
+      "name": "Vetta.ai",
+      "year": "2025",
+      "description": "AI Technical Interviewer — full-duplex voice agent",
+      "preview": "Engineered voice agent with FastAPI WebSockets, Deepgram Nova-2, ElevenLabs (<800ms latency). Stateful DSA assessment with Gemini 2.5, Redis context, secure sandbox, and 99% session continuity.",
+      "tags": [
+        "FastAPI",
+        "WebSockets",
+        "Gemini",
+        "React"
+      ],
+      "blogSlug": "voice-ai-interviewer-under-800ms-latency"
+    },
+    {
+      "id": 3,
+      "name": "Relay",
+      "year": "2025",
+      "description": "High-Performance AI Gateway",
+      "preview": "Engineered a scalable AI Gateway and published a modular Go package for rate-limiting and cost-tracking middleware, cutting redundant upstream API calls by 40% via semantic caching. Secured 99.9% system availability with a fault-tolerant resilience layer (circuit breakers, Prometheus monitoring), designed as a reusable library for high-concurrency applications.",
+      "tags": [
+        "Go",
+        "Rate limiting",
+        "Semantic caching",
+        "Prometheus"
+      ],
+      "blogSlug": "ai-api-calls-leaking-money-relay"
+    },
+    {
+      "id": 4,
+      "name": "Multi-provider RAG pipeline",
+      "year": "2025",
+      "description": "TechiZen — Vertex AI, AWS Bedrock, Ollama",
+      "preview": "Engineered RAG across Google Vertex AI, AWS Bedrock and Ollama using LangChain, handling 1,500+ contextual queries/month as the platform's core knowledge backbone.",
+      "tags": [
+        "LangChain",
+        "Vertex AI",
+        "RAG"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Candidate ranking system",
+      "year": "2025",
+      "description": "HireZapp — FastAPI screening automation",
+      "preview": "Engineered candidate ranking with FastAPI, reducing resume screening from 15 mins to <2 mins per candidate. LLM entity extraction with LangChain & Gemini at 95%+ accuracy.",
+      "tags": [
+        "FastAPI",
+        "LangChain",
+        "Gemini"
+      ]
+    }
+  ]
+}

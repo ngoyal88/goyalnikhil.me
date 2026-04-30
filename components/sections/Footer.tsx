@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { fadeUpVariants, staggerContainer } from '@/lib/animations'
-import { resumePath, socialLinks } from '@/lib/data'
+import { useSiteData } from '@/components/SiteDataProvider'
 
 const navLinks = [
   { label: 'work', href: '/work' },
@@ -14,6 +14,7 @@ const navLinks = [
 ]
 
 export default function Footer() {
+  const { data } = useSiteData()
   const year = new Date().getFullYear()
   const pathname = usePathname()
   const isHome = pathname === '/'
@@ -47,7 +48,7 @@ export default function Footer() {
 
           {!isHome && (
             <motion.div className="flex items-center gap-5" variants={fadeUpVariants}>
-              {socialLinks.map((link) => (
+              {data.socialLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
@@ -83,7 +84,7 @@ export default function Footer() {
               </Link>
             ))}
             <Link
-              href={resumePath}
+              href={data.resume.path}
               className="hover:text-accent transition-colors"
             >
               resume

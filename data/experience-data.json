@@ -1,0 +1,39 @@
+{
+  "experience": [
+    {
+      "id": 1,
+      "company": "TechiZen",
+      "role": "Software Developer Engineer Intern",
+      "period": "Feb 2026— present",
+      "description": "Built RAG pipelines and LLM-powered assessment tools for an ed-tech platform.",
+      "points": [
+        "Engineered multi-provider RAG pipeline (Vertex AI, AWS Bedrock, Ollama) with LangChain — 1,500+ queries/month.",
+        "Built automated assessment pipeline from PDFs & YouTube transcripts, cutting manual content creation by 83%.",
+        "Integrated NeMo Guardrails into student-facing LLM instructor — 90%+ reliability on jailbreaks, profanity, hallucinations."
+      ]
+    },
+    {
+      "id": 2,
+      "company": "HireZapp",
+      "role": "Software Developer Intern",
+      "period": "Jun 2025 — Aug 2025",
+      "description": "Automated resume screening and job description generation with LLMs.",
+      "points": [
+        "Engineered candidate ranking system in FastAPI — screening time from 15 mins to <2 mins per candidate.",
+        "Developed job description pipeline with web-scraped company data; reduced drafting from ~8 to ~2 iterations.",
+        "Deployed LLM entity extraction (LangChain, Gemini) — 95%+ accuracy on Skills & Experience from diverse resumes."
+      ]
+    },
+    {
+      "id": 3,
+      "company": "Thapar Institute of Engineering and Technology",
+      "role": "Machine Learning Intern",
+      "period": "Dec 2024 — May 2025",
+      "description": "Research internship focused on biosignal processing and deep learning for assistive robotics.",
+      "points": [
+        "Implemented real-time signal processing pipelines for multimodal biosignals (EEG, EMG, EOG) enabling low-latency motion intent prediction for a 6-DoF exoskeleton system.",
+        "Designed attention-based fusion models (CNN-LSTM, LMDA-Net) improving prediction stability and accuracy over baseline."
+      ]
+    }
+  ]
+}

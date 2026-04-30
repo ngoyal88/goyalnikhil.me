@@ -3,9 +3,10 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
-import { resumePath } from '@/lib/data'
+import { useSiteData } from '@/components/SiteDataProvider'
 
 export default function Navbar() {
+  const { data } = useSiteData()
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
@@ -60,7 +61,7 @@ export default function Navbar() {
           </Link>
 
           <Link
-            href={resumePath}
+            href={data.resume.path}
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             resume

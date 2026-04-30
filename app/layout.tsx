@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { SiteDataProvider } from '@/components/SiteDataProvider'
 import { Toaster } from '@/components/ui/sonner'
 import CustomCursor from '@/components/CustomCursor'
 import './globals.css'
@@ -63,10 +64,12 @@ export default function RootLayout({
       <body
         className={`${geist.variable} ${geistMono.variable} font-sans antialiased bg-background text-foreground`}
       >
-        <CustomCursor />
-        {children}
-        <Toaster />
-        <Analytics />
+        <SiteDataProvider>
+          <CustomCursor />
+          {children}
+          <Toaster />
+          <Analytics />
+        </SiteDataProvider>
       </body>
     </html>
   )
