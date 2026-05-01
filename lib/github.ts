@@ -14,6 +14,10 @@ type GitCommitResponse = {
   sha: string
 }
 
+type GitHubRepoResponse = {
+  default_branch: string
+}
+
 type GitHubEnv = {
   token: string
   owner: string
@@ -27,18 +31,37 @@ type GitHubEnv = {
 const DEFAULT_BRANCH = 'main'
 const DEFAULT_DATA_DIR = 'data'
 
+class GitHubApiError extends Error {
+  status: number
+  body: string
+
+  constructor(status: number, body: string) {
+    super(`GitHub API error: ${status} ${body}`)
+    this.status = status
+    this.body = body
+  }
+}
+
+function normalizeBranch(branch: string): string {
+  return branch.replace(/^refs\/heads\//, '').trim()
+}
+
 function getGitHubEnv(): GitHubEnv | null {
-  const token = process.env.GITHUB_TOKEN
-  const owner = process.env.GITHUB_OWNER
-  const repo = process.env.GITHUB_REPO
+  const token = process.env.GITHUB_TOKEN?.trim()
+  const owner = process.env.GITHUB_OWNER?.trim()
+  const repo = process.env.GITHUB_REPO?.trim()
   if (!token || !owner || !repo) return null
+
+  const rawBranch = process.env.GITHUB_BRANCH?.trim() || DEFAULT_BRANCH
+  const branch = normalizeBranch(rawBranch) || DEFAULT_BRANCH
+  const dataDir = (process.env.GITHUB_DATA_DIR || DEFAULT_DATA_DIR).trim() || DEFAULT_DATA_DIR
 
   return {
     token,
     owner,
     repo,
-    branch: process.env.GITHUB_BRANCH || DEFAULT_BRANCH,
-    dataDir: process.env.GITHUB_DATA_DIR || DEFAULT_DATA_DIR,
+    branch,
+    dataDir,
     authorName: process.env.GITHUB_COMMIT_NAME,
     authorEmail: process.env.GITHUB_COMMIT_EMAIL,
   }
@@ -73,7 +96,7 @@ async function githubRequest<T>(url: string, token: string, init?: RequestInit):
 
   if (!response.ok) {
     const text = await response.text().catch(() => '')
-    throw new Error(`GitHub API error: ${response.status} ${text}`)
+    throw new GitHubApiError(response.status, text)
   }
 
   return (await response.json()) as T
@@ -136,6 +159,39 @@ function buildTreeEntries(dataDir: string, nextData: SiteData) {
   ]
 }
 
+async function getRefSha(baseUrl: string, token: string, branch: string): Promise<GitRefResponse> {
+  const refUrl = `${baseUrl}/git/ref/heads/${encodeURIComponent(branch)}`
+  return githubRequest<GitRefResponse>(refUrl, token)
+}
+
+async function resolveBranchRef(baseUrl: string, token: string, branch: string) {
+  try {
+    const ref = await getRefSha(baseUrl, token, branch)
+    return { ref, branch }
+  } catch (error) {
+    if (!(error instanceof GitHubApiError) || error.status !== 404) {
+      throw error
+    }
+
+    let defaultBranch = ''
+    try {
+      const repoInfo = await githubRequest<GitHubRepoResponse>(baseUrl, token)
+      defaultBranch = normalizeBranch(repoInfo.default_branch || '')
+    } catch (repoError) {
+      throw new Error(
+        `GitHub ref not found for branch "${branch}" and repo lookup failed. Check owner/repo/token.`
+      )
+    }
+
+    if (!defaultBranch || defaultBranch === branch) {
+      throw new Error(`GitHub ref not found for branch "${branch}".`)
+    }
+
+    const fallbackRef = await getRefSha(baseUrl, token, defaultBranch)
+    return { ref: fallbackRef, branch: defaultBranch }
+  }
+}
+
 export async function commitSiteDataToGitHub(nextData: SiteData): Promise<void> {
   const env = getGitHubEnv()
   if (!env) {
@@ -143,8 +199,7 @@ export async function commitSiteDataToGitHub(nextData: SiteData): Promise<void> 
   }
 
   const baseUrl = `https://api.github.com/repos/${env.owner}/${env.repo}`
-  const refUrl = `${baseUrl}/git/ref/heads/${encodeURIComponent(env.branch)}`
-  const ref = await githubRequest<GitRefResponse>(refUrl, env.token)
+  const { ref, branch: resolvedBranch } = await resolveBranchRef(baseUrl, env.token, env.branch)
   const baseCommitSha = ref.object.sha
 
   const treeUrl = `${baseUrl}/git/trees`
@@ -175,7 +230,7 @@ export async function commitSiteDataToGitHub(nextData: SiteData): Promise<void> 
     body: JSON.stringify(commitBody),
   })
 
-  const updateRefUrl = `${baseUrl}/git/refs/heads/${encodeURIComponent(env.branch)}`
+  const updateRefUrl = `${baseUrl}/git/refs/heads/${encodeURIComponent(resolvedBranch)}`
   await githubRequest(updateRefUrl, env.token, {
     method: 'PATCH',
     body: JSON.stringify({ sha: commit.sha, force: false }),
